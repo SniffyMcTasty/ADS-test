@@ -28,18 +28,29 @@ It will take at least 2 hours but no more than 4 to complete the test.
 ```
 
 
-## Front-End Tasks
+## Front-End (FE) Tasks
 
-* A single page "app" that displays years (Task #2) and vehicle models (Task #1) for the vehicle make "Acura" in a grid format. The data are coming from an API that you will develop (Back-End Tasks).
+* A single page "app" that displays years (BE Task #2) and vehicle models (BE Task #1) for the vehicle make __"Acura"__ in a grid format. The data are coming from an API that you will develop (Back-End Tasks).
 * A grid with the contents of `years` and `vehicle-models` (as in the mockup below).
 
 ![Database structure](./data/mockup.png "Page Mockup")
 
-* Set the corresponding box to be blue if the entry for that vehicle model and year exists. And grey if it doesn't exist. (An api call will be necessary Task #3)
-* When clicking on a vehicle-model/year box, it is toggled and the visual displays the new state. (An api call will be necessary to be able to update the state in the database, Task #4)
+* Set the corresponding box to be blue if the entry for that vehicle model and year exists. And grey if it doesn't exist. (An api call will be necessary BE Task #3)
+* When clicking on a vehicle-model/year box, it is toggled and the visual displays the new state. (An api call will be necessary to be able to update the state in the database, BE Task #4)
+
+### Example
+
+Once the list of vehicles are loaded into the grid (BE Task #3)
+
+- The years for the RLX are `"coverage":{"RLX":[2012,2011,2010]}`
+- After clicking on the 2013 column next to RLX: `"coverage":{"RLX":[2013,2012,2011,2010]}`
+- The visual should now show a blue box for the year 2013 next to RLX.
+- Clicking on the 2010 column next to RLX:
+  `"coverage":{"RLX":[2013,2012,2011]}`
+- The visual should now show a grey box for the year 2010 next to RLX.
 
 
-## Back-End Tasks
+## Back-End (BE) Tasks
 
 Develop the following tasks in the language you prefer (PHP, Goland or Python). A stack is available for each of these languages in the folder `back-end`.
 
@@ -50,7 +61,7 @@ Develop the following tasks in the language you prefer (PHP, Goland or Python). 
 * TASK 2: As a user, I want to list all the vehicle years available to be able to define the column header of the grid
     - Implement a new endpoint to do this action
 
-* TASK 3: As a user, I want to know the vehicle coverage by make/year/model to be able to fill up the grid with the correct colors.
+* TASK 3: As a user, I want to get the list of vehicle to be able to fill up the grid with the proper colors.
     - Implement a new endpoint to do this action
 
 * TASK 4: As a user, I want to be able to remove a vehicle from the coverage (model/year)
