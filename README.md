@@ -85,15 +85,14 @@ Note: You are free to structure the response as needed.
     - Update the database migration script `data/sql/update_database.sql` add a column `updated` in all the tables existing. (This column contain the date and the time when the data has been changed)
     - Implement a new endpoint to do this action
 
-Extra task:
+Extra tasks:
 
 * TASK 5: Secure the calls with a JWT token
-* TASK 6: Add some Unit Test (two at least)
+* TASK 6: Add some Unit Test
 
 ## How to submit your work?
 
-Submit your work preferably on a github account or else create a zip file and send it by email
-
+Submit your work preferably on a github account else zip the source and send it by email.
 
 ## Evaluation
 
