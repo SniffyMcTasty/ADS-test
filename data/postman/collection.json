@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "b8af2119-904a-44da-88d9-764042abe089",
+		"name": "Backend-Test",
+		"description": "This postman collection contain all the endpoint to test the api of the candidat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List of vehicle makes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/vehicle-makes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"vehicle-makes"
+					]
+				},
+				"description": "Get the list of the vehicle make"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/vehicle-makes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicle-makes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 12 Jan 2021 22:14:20 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "503"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"vehicle_makes\": [\n        {\n            \"id\": 1,\n            \"name\": \"Acura\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Alfa Romeo\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Audi\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Cadillac\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Chevrolet\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Dodge\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Ferrari\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Fiat\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Ford\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Kia\"\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Lexus\"\n        },\n        {\n            \"id\": 12,\n            \"name\": \"Mazda\"\n        },\n        {\n            \"id\": 13,\n            \"name\": \"Nissan\"\n        },\n        {\n            \"id\": 14,\n            \"name\": \"Opel\"\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Renault\"\n        },\n        {\n            \"id\": 16,\n            \"name\": \"Subaru\"\n        },\n        {\n            \"id\": 17,\n            \"name\": \"Toyota\"\n        },\n        {\n            \"id\": 18,\n            \"name\": \"Volkswagen\"\n        },\n        {\n            \"id\": 19,\n            \"name\": \"Volvo\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}
