@@ -78,17 +78,22 @@ Example of response: (List of the years available by model for the make "Acura")
   }
 }
 ```
-Note: You are free to structure the response as you like. (the example would not be pratical to apply the task #4)
+Note: You are free to structure the response as needed.
 
 * TASK 4: As a user, I want to be able to remove a vehicle from the coverage (model/year)
     - Update the database migration script `data/sql/update_database.sql` add a column `state` in all the tables existing. This column can take 2 values 0/1. (0 means the entry has been turn off)
     - Update the database migration script `data/sql/update_database.sql` add a column `updated` in all the tables existing. (This column contain the date and the time when the data has been changed)
     - Implement a new endpoint to do this action
 
+Extra task:
+
+* TASK 5: Secure the calls with a JWT token
+* TASK 6: Add some Unit Test (two at least)
 
 ## How to submit your work?
 
-Create a zip file and send it by email.
+Submit your work preferably on a github account or else create a zip file and send it by email
+
 
 ## Evaluation
 
