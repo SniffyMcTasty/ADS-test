@@ -64,6 +64,22 @@ Develop the following tasks in the language you prefer (PHP, Goland or Python). 
 * TASK 3: As a user, I want to get the list of vehicle to be able to fill up the grid with the proper colors.
     - Implement a new endpoint to do this action
 
+Example of response: (List of the years available by model for the make "Acura")
+```json 
+ {
+  "coverage": {
+    "ILX": [2017, 2016, 2015, 2014],
+    "MDX": [2017, 2016, 2015, 2014],
+    "RDX": [2011, 2010],
+    "RLX": [2012, 2011, 2010],
+    "TL": [2014, 2013, 2012, 2011, 2010],
+    "TLX": [2016, 2015, 2014, 2013],
+    "TSX": [2017, 2015]
+  }
+}
+```
+Note: You are free to structure the response as you like. (the example would not be pratical to apply the task #4)
+
 * TASK 4: As a user, I want to be able to remove a vehicle from the coverage (model/year)
     - Update the database migration script `data/sql/update_database.sql` add a column `state` in all the tables existing. This column can take 2 values 0/1. (0 means the entry has been turn off)
     - Update the database migration script `data/sql/update_database.sql` add a column `updated` in all the tables existing. (This column contain the date and the time when the data has been changed)
