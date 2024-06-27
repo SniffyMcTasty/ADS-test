@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:8
+    restart: always
+    container_name: cn_mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER: usrtest
+      MYSQL_PASSWORD: pwdtest
+      MYSQL_ROOT_PASSWORD: pwdtest
+      MYSQL_DATABASE: local_dbtest
+    # sync folders. MySQL data is stored outside container so that rebuilding doesn't clear db.
+    # folder is at workspace root.
+    volumes:
+      - ./mysql:/var/lib/mysql:rw
+      - ./sql/create_database.sql:/docker-entrypoint-initdb.d/1.sql:ro
+      - ./sql/load_fixtures.sql:/docker-entrypoint-initdb.d/2.sql:ro
+      - ./sql/update_database.sql:/docker-entrypoint-initdb.d/3.sql:ro

@@ -49,3 +49,8 @@ Thumbs.db
 
 # Parcel files
 .cache/
+
+backendapi
+backendapi.db
+.env
+mysql

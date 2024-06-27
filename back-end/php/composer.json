@@ -1,0 +1,48 @@
+{
+    "name": "automotivedatasolutions/back-end-test",
+    "description": "ADS Back-End Skill Test with the Slim Framework v4",
+    "keywords": [
+        "microframework",
+        "rest",
+        "router",
+        "psr7"
+    ],
+    "homepage": "https://bitbucket.org/automotivedatasolutions/back-end-test/src/master/",
+    "license": "proprietary",
+    "require": {
+        "php": "^7.2",
+        "ext-json": "*",
+        "monolog/monolog": "^2.2",
+        "php-di/php-di": "^6.3",
+        "slim/psr7": "^1.3",
+        "slim/slim": "^4.7",
+        "ext-pdo": "*"
+    },
+    "require-dev": {
+        "jangregor/phpstan-prophecy": "^0.8.1",
+        "phpstan/extension-installer": "^1.1.0",
+        "phpstan/phpstan": "^0.12.64",
+        "phpunit/phpunit": "^8.5"
+    },
+    "config": {
+        "process-timeout": 0,
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "start": "php -S localhost:8080 -t public",
+        "test": "phpunit"
+    }
+}

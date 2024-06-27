@@ -49,3 +49,11 @@ Thumbs.db
 
 # Parcel files
 .cache/
+
+.vscode/
+/coverage/
+/vendor/
+logs
+mysql
+!/logs/README.md
+.phpunit.result.cache
