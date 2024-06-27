@@ -28,6 +28,46 @@ It will take at least 2 hours but no more than 4 to complete the test.
 ```
 
 
+## Back-End (BE) Tasks
+
+Develop the following tasks in the language you prefer (PHP, Goland or Python). A stack is available for each of these languages in the folder `back-end`.
+
+
+* TASK 1: As a user, I want to list all the vehicle model by vehicle make (Ex. Acura) to be able to define the row header of the grid
+  - Implement a new endpoint to do this action
+
+* TASK 2: As a user, I want to list all the vehicle years available to be able to define the column header of the grid
+  - Implement a new endpoint to do this action
+
+* TASK 3: As a user, I want to get the list of vehicle to be able to fill up the grid with the proper colors.
+  - Implement a new endpoint to do this action
+
+Example of response: (List of the years available by model for the make "Acura")
+```json 
+ {
+  "coverage": {
+    "ILX": [2017, 2016, 2015, 2014],
+    "MDX": [2017, 2016, 2015, 2014],
+    "RDX": [2011, 2010],
+    "RLX": [2012, 2011, 2010],
+    "TL": [2014, 2013, 2012, 2011, 2010],
+    "TLX": [2016, 2015, 2014, 2013],
+    "TSX": [2017, 2015]
+  }
+}
+```
+Note: You are free to structure the response as needed.
+
+* TASK 4: As a user, I want to be able to remove a vehicle from the coverage (model/year)
+  - Update the database migration script `data/sql/update_database.sql` add a column `state` in all the tables existing. This column can take 2 values 0/1. (0 means the entry has been turn off)
+  - Update the database migration script `data/sql/update_database.sql` add a column `updated` in all the tables existing. (This column contain the date and the time when the data has been changed)
+  - Implement a new endpoint to do this action
+
+Extra tasks:
+
+* TASK 5: Secure the calls with a JWT token
+* TASK 6: Add some Unit Test
+
 ## Front-End (FE) Tasks
 
 * A single page "app" that displays years (BE Task #2) and vehicle models (BE Task #1) for the vehicle make __"Acura"__ in a grid format. The data are coming from an API that you will develop (Back-End Tasks).
@@ -49,46 +89,6 @@ Once the list of vehicles are loaded into the grid (BE Task #3)
   `"coverage":{"RLX":[2013,2012,2011]}`
 - The visual should now show a grey box for the year 2010 next to RLX.
 
-
-## Back-End (BE) Tasks
-
-Develop the following tasks in the language you prefer (PHP, Goland or Python). A stack is available for each of these languages in the folder `back-end`.
-
-
-* TASK 1: As a user, I want to list all the vehicle model by vehicle make (Ex. Acura) to be able to define the row header of the grid
-    - Implement a new endpoint to do this action
-
-* TASK 2: As a user, I want to list all the vehicle years available to be able to define the column header of the grid
-    - Implement a new endpoint to do this action
-
-* TASK 3: As a user, I want to get the list of vehicle to be able to fill up the grid with the proper colors.
-    - Implement a new endpoint to do this action
-
-Example of response: (List of the years available by model for the make "Acura")
-```json 
- {
-  "coverage": {
-    "ILX": [2017, 2016, 2015, 2014],
-    "MDX": [2017, 2016, 2015, 2014],
-    "RDX": [2011, 2010],
-    "RLX": [2012, 2011, 2010],
-    "TL": [2014, 2013, 2012, 2011, 2010],
-    "TLX": [2016, 2015, 2014, 2013],
-    "TSX": [2017, 2015]
-  }
-}
-```
-Note: You are free to structure the response as needed.
-
-* TASK 4: As a user, I want to be able to remove a vehicle from the coverage (model/year)
-    - Update the database migration script `data/sql/update_database.sql` add a column `state` in all the tables existing. This column can take 2 values 0/1. (0 means the entry has been turn off)
-    - Update the database migration script `data/sql/update_database.sql` add a column `updated` in all the tables existing. (This column contain the date and the time when the data has been changed)
-    - Implement a new endpoint to do this action
-
-Extra tasks:
-
-* TASK 5: Secure the calls with a JWT token
-* TASK 6: Add some Unit Test
 
 ## How to submit your work?
 
