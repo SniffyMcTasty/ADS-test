@@ -48,7 +48,7 @@ composer start
 host = "host.docker.internal"
 ```
 
-Note: be sure you have in your host file the following line (MacOS or Linux: `/etc/hosts` Windows ``)
+Note: be sure you have in your host file the following line (MacOS or Linux: `/etc/hosts` Windows `C:\Windows\System32\drivers\etc/hosts`)
 
 ```
 127.0.0.1 host.docker.internal
