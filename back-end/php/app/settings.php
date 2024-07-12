@@ -18,7 +18,7 @@ return function (ContainerBuilder $containerBuilder) {
                 'displayErrorDetails' => true, // Should be set to false in production
                 'logger' => [
                     'name' => 'backend_phptest',
-                    'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
+                    'path' => 'php://stdout',
                     'level' => Logger::DEBUG,
                 ],
                 'db' => [

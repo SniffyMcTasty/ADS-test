@@ -1,9 +1,5 @@
 version: '3.7'
 
-volumes:
-    logs:
-        driver: local
-
 services:
     web:
         build:
@@ -15,7 +11,6 @@ services:
             docker: "true"
         ports:
             - 8080:8080
-        volumes:
-            - .:/var/www
-            - logs:/var/www/logs
+#        volumes:
+#            - .:/var/www
 

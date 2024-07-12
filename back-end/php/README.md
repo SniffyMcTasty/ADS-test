@@ -26,6 +26,26 @@ composer install
 
 ### Run API
 
+#### With docker
+
+1) update the database host in the config `config/application.ini` with the following value
+
+``` 
+host = "host.docker.internal"
+```
+
+Note: be sure you have in your host file the following line (MacOS or Linux: `/etc/hosts` Windows `C:\Windows\System32\drivers\etc\hosts`)
+
+```
+127.0.0.1 host.docker.internal
+```
+
+2) Spawn containers
+
+```bash 
+docker-compose up
+```
+
 #### Without docker
 
 1) update the database host in the config `config/application.ini` with the following value
@@ -38,26 +58,6 @@ host = "127.0.0.1"
 
 ```bash 
 composer start
-```
-
-#### With docker
-
-1) update the database host in the config `config/application.ini` with the following value
-
-``` 
-host = "host.docker.internal"
-```
-
-Note: be sure you have in your host file the following line (MacOS or Linux: `/etc/hosts` Windows `C:\Windows\System32\drivers\etc/hosts`)
-
-```
-127.0.0.1 host.docker.internal
-```
-
-2) Spawn containers
-
-```bash 
-docker-compose up
 ```
 
 ### Check tha api
