@@ -123,7 +123,7 @@ The process will depend on the language you choose for developing the back-end:
 
 * In PHP check the [Readme](./back-end/php/README.md) in the back-end/php folder
 * In Python check the [Readme](./back-end/python/README.md) in the back-end/python folder
-* In Golang check the [Readme](./back-end/golang/README.md) in the back-end/golanf folder
+* In Golang check the [Readme](./back-end/golang/README.md) in the back-end/golang folder
 
 ### Start the front-end
 
