@@ -104,3 +104,26 @@ Submit your work preferably on a github account else zip the source and send it 
 This will be evaluated on the compliance to the supplied visual (mockup.png), and the code quality.
 
 You will have the opportunity to justify your decisions during the interview.
+
+## How to start your Dev environment?
+
+You need to start:
+* the database
+* the back-end
+* the front-end
+
+### Start the database
+
+Check the [Readme](database/README.md)  in the database folder
+
+### Start the back-end
+
+The process will depend on the language you choose for developing the back-end:
+
+* In PHP check the [Readme](back-end/php/README.md) in the back-end/php folder
+  In Python check the [Readme](back-end/python/README.md) in the back-end/python folder
+* In Golang check the [Readme](back-end/golang/README.md) in the back-end/golanf folder
+
+### Start the front-end
+
+Check the [Readme](front-end/README.md)  in the front-end folder
