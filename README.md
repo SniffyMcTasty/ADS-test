@@ -2,7 +2,7 @@
 
 This test will evaluate your front-end and back-end skills.
 
-It will take at least 2 hours but no more than 4 to complete the test.
+It will take at least 4 hours but no more than 6 to complete the test.
 
 ## Requirements
 
