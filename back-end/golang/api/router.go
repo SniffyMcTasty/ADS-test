@@ -10,5 +10,8 @@ func RegisterRoutes(r *gin.Engine) {
 	{
 		// Vehicles
 		api.GET("/vehicle-makes", handleVehicleMakeList)
+		api.GET("/vehicle-makes/:makeId/vehicle-models", handleVehicleModelList)
+		api.GET("/years", handleVehicleYearsList)
+		api.GET("/vehicle-makes/:makeId/coverage", handleVehicleMakeCoverageList)
 	}
 }
