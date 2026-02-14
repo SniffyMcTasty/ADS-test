@@ -1,0 +1,322 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/vehicle-makes": {
+            "get": {
+                "description": "Get the list of vehicle make",
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Get the list of vehicle make",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.VehicleMakeResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicle-makes/:makeId/change-coverage/:modelId/:year": {
+            "post": {
+                "description": "Change the coverage state of a vehicle by make id, model id and year",
+                "tags": [
+                    "Coverage"
+                ],
+                "summary": "Switch the coverage state of a vehicle",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Vehicle Make ID",
+                        "name": "makeId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Vehicle Model ID",
+                        "name": "modelId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Vehicle Year",
+                        "name": "year",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.PostMessageResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicle-makes/:makeId/coverage": {
+            "get": {
+                "description": "Get the list of vehicle coverage for every model and year by make id",
+                "tags": [
+                    "Coverage"
+                ],
+                "summary": "Get a list of vehicle coverage",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Vehicle Make ID",
+                        "name": "makeId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.VehicleCoverageResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicle-makes/:makeId/years": {
+            "get": {
+                "description": "Get the list of vehicle years for every model by make id",
+                "tags": [
+                    "Years"
+                ],
+                "summary": "Get a list of vehicle years",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Vehicle Make ID",
+                        "name": "makeId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.VehicleYearResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/vehicle-makes/{makeId}/vehicle-models": {
+            "get": {
+                "description": "Get the list of vehicle models by make id",
+                "tags": [
+                    "Models"
+                ],
+                "summary": "Get a list of vehicle models",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Vehicle Make ID",
+                        "name": "makeId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.VehicleModelResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "api.APIErrorResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.PostMessageData": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.PostMessageResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/api.PostMessageData"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "api.VehicleCoverageData": {
+            "type": "object",
+            "properties": {
+                "coverage": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                }
+            }
+        },
+        "api.VehicleCoverageResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/api.VehicleCoverageData"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "api.VehicleMake": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.VehicleMakeData": {
+            "type": "object",
+            "properties": {
+                "vehicle_makes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/api.VehicleMake"
+                    }
+                }
+            }
+        },
+        "api.VehicleMakeResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/api.VehicleMakeData"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "api.VehicleModelData": {
+            "type": "object",
+            "properties": {
+                "vehicle_models": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/api.VehiculeModel"
+                    }
+                }
+            }
+        },
+        "api.VehicleModelResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/api.VehicleModelData"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "api.VehicleYearData": {
+            "type": "object",
+            "properties": {
+                "vehicle_years": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "api.VehicleYearResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/api.VehicleYearData"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "api.VehiculeModel": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

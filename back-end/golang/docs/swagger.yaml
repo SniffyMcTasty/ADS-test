@@ -1,0 +1,210 @@
+definitions:
+  api.APIErrorResponse:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+    type: object
+  api.PostMessageData:
+    properties:
+      message:
+        type: string
+    type: object
+  api.PostMessageResponse:
+    properties:
+      data:
+        $ref: '#/definitions/api.PostMessageData'
+      success:
+        type: boolean
+    type: object
+  api.VehicleCoverageData:
+    properties:
+      coverage:
+        additionalProperties:
+          items:
+            format: int32
+            type: integer
+          type: array
+        type: object
+    type: object
+  api.VehicleCoverageResponse:
+    properties:
+      data:
+        $ref: '#/definitions/api.VehicleCoverageData'
+      success:
+        type: boolean
+    type: object
+  api.VehicleMake:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      url:
+        type: string
+    type: object
+  api.VehicleMakeData:
+    properties:
+      vehicle_makes:
+        items:
+          $ref: '#/definitions/api.VehicleMake'
+        type: array
+    type: object
+  api.VehicleMakeResponse:
+    properties:
+      data:
+        $ref: '#/definitions/api.VehicleMakeData'
+      success:
+        type: boolean
+    type: object
+  api.VehicleModelData:
+    properties:
+      vehicle_models:
+        items:
+          $ref: '#/definitions/api.VehiculeModel'
+        type: array
+    type: object
+  api.VehicleModelResponse:
+    properties:
+      data:
+        $ref: '#/definitions/api.VehicleModelData'
+      success:
+        type: boolean
+    type: object
+  api.VehicleYearData:
+    properties:
+      vehicle_years:
+        items:
+          type: integer
+        type: array
+    type: object
+  api.VehicleYearResponse:
+    properties:
+      data:
+        $ref: '#/definitions/api.VehicleYearData'
+      success:
+        type: boolean
+    type: object
+  api.VehiculeModel:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/vehicle-makes:
+    get:
+      description: Get the list of vehicle make
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.VehicleMakeResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIErrorResponse'
+      summary: Get the list of vehicle make
+      tags:
+      - Vehicles
+  /api/vehicle-makes/:makeId/change-coverage/:modelId/:year:
+    post:
+      description: Change the coverage state of a vehicle by make id, model id and
+        year
+      parameters:
+      - description: Vehicle Make ID
+        in: path
+        name: makeId
+        required: true
+        type: integer
+      - description: Vehicle Model ID
+        in: path
+        name: modelId
+        required: true
+        type: integer
+      - description: Vehicle Year
+        in: path
+        name: year
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.PostMessageResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIErrorResponse'
+      summary: Switch the coverage state of a vehicle
+      tags:
+      - Coverage
+  /api/vehicle-makes/:makeId/coverage:
+    get:
+      description: Get the list of vehicle coverage for every model and year by make
+        id
+      parameters:
+      - description: Vehicle Make ID
+        in: path
+        name: makeId
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.VehicleCoverageResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIErrorResponse'
+      summary: Get a list of vehicle coverage
+      tags:
+      - Coverage
+  /api/vehicle-makes/:makeId/years:
+    get:
+      description: Get the list of vehicle years for every model by make id
+      parameters:
+      - description: Vehicle Make ID
+        in: path
+        name: makeId
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.VehicleYearResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIErrorResponse'
+      summary: Get a list of vehicle years
+      tags:
+      - Years
+  /api/vehicle-makes/{makeId}/vehicle-models:
+    get:
+      description: Get the list of vehicle models by make id
+      parameters:
+      - description: Vehicle Make ID
+        in: path
+        name: makeId
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.VehicleModelResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIErrorResponse'
+      summary: Get a list of vehicle models
+      tags:
+      - Models
+swagger: "2.0"
