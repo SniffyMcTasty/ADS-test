@@ -1,70 +1,1093 @@
 {
-	"info": {
-		"_postman_id": "b8af2119-904a-44da-88d9-764042abe089",
-		"name": "Backend-Test",
-		"description": "This postman collection contain all the endpoint to test the api of the candidat",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "List of vehicle makes",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/vehicle-makes",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"vehicle-makes"
-					]
-				},
-				"description": "Get the list of the vehicle make"
-			},
-			"response": [
-				{
-					"name": "Success Response",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/vehicle-makes",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"vehicle-makes"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 12 Jan 2021 22:14:20 GMT"
-						},
-						{
-							"key": "Content-Length",
-							"value": "503"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"vehicle_makes\": [\n        {\n            \"id\": 1,\n            \"name\": \"Acura\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Alfa Romeo\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Audi\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Cadillac\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Chevrolet\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Dodge\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Ferrari\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Fiat\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Ford\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Kia\"\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Lexus\"\n        },\n        {\n            \"id\": 12,\n            \"name\": \"Mazda\"\n        },\n        {\n            \"id\": 13,\n            \"name\": \"Nissan\"\n        },\n        {\n            \"id\": 14,\n            \"name\": \"Opel\"\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Renault\"\n        },\n        {\n            \"id\": 16,\n            \"name\": \"Subaru\"\n        },\n        {\n            \"id\": 17,\n            \"name\": \"Toyota\"\n        },\n        {\n            \"id\": 18,\n            \"name\": \"Volkswagen\"\n        },\n        {\n            \"id\": 19,\n            \"name\": \"Volvo\"\n        }\n    ]\n}"
-				}
-			]
-		}
-	]
+    "item": [
+        {
+            "name": "api",
+            "description": "",
+            "item": [
+                {
+                    "name": "login",
+                    "description": "",
+                    "item": [
+                        {
+                            "id": "3b99cfcf-a3e5-475c-9b09-24ce8f0a74ce",
+                            "name": "Login",
+                            "request": {
+                                "name": "Login",
+                                "description": {
+                                    "content": "Authenticate and receive a JWT token",
+                                    "type": "text/plain"
+                                },
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "login"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "auth": null
+                            },
+                            "response": [
+                                {
+                                    "id": "95663616-2503-4a0b-b39d-d596b101c5c5",
+                                    "name": "OK",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "login"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                            }
+                                        ],
+                                        "method": "POST",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "status": "OK",
+                                    "code": 200,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                        }
+                                    ],
+                                    "body": "{\n  \"data\": {\n    \"token\": \"<string>\"\n  },\n  \"success\": \"<boolean>\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "json"
+                                },
+                                {
+                                    "id": "6ce8d2f9-61ba-4d04-9f48-4f13c0656233",
+                                    "name": "Bad Request",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "login"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                            }
+                                        ],
+                                        "method": "POST",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "status": "Bad Request",
+                                    "code": 400,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                        }
+                                    ],
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "json"
+                                },
+                                {
+                                    "id": "c8f3da1e-bd09-4269-8452-715ae5557fce",
+                                    "name": "Unauthorized",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "login"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                            }
+                                        ],
+                                        "method": "POST",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "status": "Unauthorized",
+                                    "code": 401,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                        }
+                                    ],
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "json"
+                                },
+                                {
+                                    "id": "cc334835-9001-4dc6-a053-ba129e1d35a0",
+                                    "name": "Internal Server Error",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "login"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                            }
+                                        ],
+                                        "method": "POST",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "status": "Internal Server Error",
+                                    "code": 500,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                        }
+                                    ],
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "json"
+                                }
+                            ],
+                            "event": [],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "vehicle-makes",
+                    "description": "",
+                    "item": [
+                        {
+                            "id": "a69d7dbc-63b2-4d54-9b43-e8e0699402e9",
+                            "name": "Get the list of vehicle make",
+                            "request": {
+                                "name": "Get the list of vehicle make",
+                                "description": {
+                                    "content": "Get the list of vehicle make",
+                                    "type": "text/plain"
+                                },
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "vehicle-makes"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {},
+                                "auth": null
+                            },
+                            "response": [
+                                {
+                                    "id": "a2baaf14-1132-45fc-b720-108444720c51",
+                                    "name": "OK",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "vehicle-makes"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "GET",
+                                        "body": {}
+                                    },
+                                    "status": "OK",
+                                    "code": 200,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "*/*"
+                                        }
+                                    ],
+                                    "body": "{\n  \"data\": {\n    \"vehicle_makes\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"url\": \"<string>\"\n      }\n    ]\n  },\n  \"success\": \"<boolean>\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "text"
+                                },
+                                {
+                                    "id": "9e9a14ec-b6a0-446d-9aff-38a8bae9ec2a",
+                                    "name": "Internal Server Error",
+                                    "originalRequest": {
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "vehicle-makes"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "GET",
+                                        "body": {}
+                                    },
+                                    "status": "Internal Server Error",
+                                    "code": 500,
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "*/*"
+                                        }
+                                    ],
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                    "cookie": [],
+                                    "_postman_previewlanguage": "text"
+                                }
+                            ],
+                            "event": [],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            }
+                        },
+                        {
+                            "name": ":makeId",
+                            "description": "",
+                            "item": [
+                                {
+                                    "name": "change-coverage",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "name": ":modelId",
+                                            "description": "",
+                                            "item": [
+                                                {
+                                                    "name": ":year",
+                                                    "description": "",
+                                                    "item": [
+                                                        {
+                                                            "id": "1cfbf496-4da3-4886-a5f1-0d4367ea0272",
+                                                            "name": "Switch the coverage state of a vehicle",
+                                                            "request": {
+                                                                "name": "Switch the coverage state of a vehicle",
+                                                                "description": {
+                                                                    "content": "Change the coverage state of a vehicle by make id, model id and year",
+                                                                    "type": "text/plain"
+                                                                },
+                                                                "url": {
+                                                                    "path": [
+                                                                        "api",
+                                                                        "vehicle-makes",
+                                                                        ":makeId",
+                                                                        "change-coverage",
+                                                                        ":modelId",
+                                                                        ":year"
+                                                                    ],
+                                                                    "host": [
+                                                                        "{{baseUrl}}"
+                                                                    ],
+                                                                    "query": [],
+                                                                    "variable": [
+                                                                        {
+                                                                            "type": "any",
+                                                                            "value": "<integer>",
+                                                                            "key": "makeId",
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) Vehicle Make ID",
+                                                                                "type": "text/plain"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "any",
+                                                                            "value": "<integer>",
+                                                                            "key": "modelId",
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) Vehicle Model ID",
+                                                                                "type": "text/plain"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "any",
+                                                                            "value": "<integer>",
+                                                                            "key": "year",
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) Vehicle Year",
+                                                                                "type": "text/plain"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "header": [
+                                                                    {
+                                                                        "key": "Accept",
+                                                                        "value": "*/*"
+                                                                    }
+                                                                ],
+                                                                "method": "POST",
+                                                                "body": {},
+                                                                "auth": null
+                                                            },
+                                                            "response": [
+                                                                {
+                                                                    "id": "5c82c5b8-5a70-4b31-9c32-5a1e63857e83",
+                                                                    "name": "OK",
+                                                                    "originalRequest": {
+                                                                        "url": {
+                                                                            "path": [
+                                                                                "api",
+                                                                                "vehicle-makes",
+                                                                                ":makeId",
+                                                                                "change-coverage",
+                                                                                ":modelId",
+                                                                                ":year"
+                                                                            ],
+                                                                            "host": [
+                                                                                "{{baseUrl}}"
+                                                                            ],
+                                                                            "query": [],
+                                                                            "variable": [
+                                                                                {
+                                                                                    "disabled": false,
+                                                                                    "description": {
+                                                                                        "content": "(Required) Vehicle Make ID",
+                                                                                        "type": "text/plain"
+                                                                                    },
+                                                                                    "type": "any",
+                                                                                    "value": "<integer>",
+                                                                                    "key": "makeId"
+                                                                                },
+                                                                                {
+                                                                                    "disabled": false,
+                                                                                    "description": {
+                                                                                        "content": "(Required) Vehicle Model ID",
+                                                                                        "type": "text/plain"
+                                                                                    },
+                                                                                    "type": "any",
+                                                                                    "value": "<integer>",
+                                                                                    "key": "modelId"
+                                                                                },
+                                                                                {
+                                                                                    "disabled": false,
+                                                                                    "description": {
+                                                                                        "content": "(Required) Vehicle Year",
+                                                                                        "type": "text/plain"
+                                                                                    },
+                                                                                    "type": "any",
+                                                                                    "value": "<integer>",
+                                                                                    "key": "year"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        "header": [
+                                                                            {
+                                                                                "key": "Accept",
+                                                                                "value": "*/*"
+                                                                            }
+                                                                        ],
+                                                                        "method": "POST",
+                                                                        "body": {}
+                                                                    },
+                                                                    "status": "OK",
+                                                                    "code": 200,
+                                                                    "header": [
+                                                                        {
+                                                                            "key": "Content-Type",
+                                                                            "value": "*/*"
+                                                                        }
+                                                                    ],
+                                                                    "body": "{\n  \"data\": {\n    \"message\": \"<string>\"\n  },\n  \"success\": \"<boolean>\"\n}",
+                                                                    "cookie": [],
+                                                                    "_postman_previewlanguage": "text"
+                                                                },
+                                                                {
+                                                                    "id": "fb44ce7b-ed13-41da-90a8-0c9aa5c2c346",
+                                                                    "name": "Internal Server Error",
+                                                                    "originalRequest": {
+                                                                        "url": {
+                                                                            "path": [
+                                                                                "api",
+                                                                                "vehicle-makes",
+                                                                                ":makeId",
+                                                                                "change-coverage",
+                                                                                ":modelId",
+                                                                                ":year"
+                                                                            ],
+                                                                            "host": [
+                                                                                "{{baseUrl}}"
+                                                                            ],
+                                                                            "query": [],
+                                                                            "variable": [
+                                                                                {
+                                                                                    "disabled": false,
+                                                                                    "description": {
+                                                                                        "content": "(Required) Vehicle Make ID",
+                                                                                        "type": "text/plain"
+                                                                                    },
+                                                                                    "type": "any",
+                                                                                    "value": "<integer>",
+                                                                                    "key": "makeId"
+                                                                                },
+                                                                                {
+                                                                                    "disabled": false,
+                                                                                    "description": {
+                                                                                        "content": "(Required) Vehicle Model ID",
+                                                                                        "type": "text/plain"
+                                                                                    },
+                                                                                    "type": "any",
+                                                                                    "value": "<integer>",
+                                                                                    "key": "modelId"
+                                                                                },
+                                                                                {
+                                                                                    "disabled": false,
+                                                                                    "description": {
+                                                                                        "content": "(Required) Vehicle Year",
+                                                                                        "type": "text/plain"
+                                                                                    },
+                                                                                    "type": "any",
+                                                                                    "value": "<integer>",
+                                                                                    "key": "year"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        "header": [
+                                                                            {
+                                                                                "key": "Accept",
+                                                                                "value": "*/*"
+                                                                            }
+                                                                        ],
+                                                                        "method": "POST",
+                                                                        "body": {}
+                                                                    },
+                                                                    "status": "Internal Server Error",
+                                                                    "code": 500,
+                                                                    "header": [
+                                                                        {
+                                                                            "key": "Content-Type",
+                                                                            "value": "*/*"
+                                                                        }
+                                                                    ],
+                                                                    "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                                                    "cookie": [],
+                                                                    "_postman_previewlanguage": "text"
+                                                                }
+                                                            ],
+                                                            "event": [],
+                                                            "protocolProfileBehavior": {
+                                                                "disableBodyPruning": true
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "coverage",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "id": "d1b37b72-a418-4698-9f5b-3c2a39123654",
+                                            "name": "Get a list of vehicle coverage",
+                                            "request": {
+                                                "name": "Get a list of vehicle coverage",
+                                                "description": {
+                                                    "content": "Get the list of vehicle coverage for every model and year by make id",
+                                                    "type": "text/plain"
+                                                },
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "vehicle-makes",
+                                                        ":makeId",
+                                                        "coverage"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": [
+                                                        {
+                                                            "type": "any",
+                                                            "value": "<integer>",
+                                                            "key": "makeId",
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) Vehicle Make ID",
+                                                                "type": "text/plain"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    }
+                                                ],
+                                                "method": "GET",
+                                                "body": {},
+                                                "auth": null
+                                            },
+                                            "response": [
+                                                {
+                                                    "id": "08743945-90f3-4cc0-b15e-412d3c00cd7f",
+                                                    "name": "OK",
+                                                    "originalRequest": {
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "vehicle-makes",
+                                                                ":makeId",
+                                                                "coverage"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": [
+                                                                {
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) Vehicle Make ID",
+                                                                        "type": "text/plain"
+                                                                    },
+                                                                    "type": "any",
+                                                                    "value": "<integer>",
+                                                                    "key": "makeId"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {}
+                                                    },
+                                                    "status": "OK",
+                                                    "code": 200,
+                                                    "header": [
+                                                        {
+                                                            "key": "Content-Type",
+                                                            "value": "*/*"
+                                                        }
+                                                    ],
+                                                    "body": "{\n  \"data\": {\n    \"coverage\": {\n      \"key_0\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  },\n  \"success\": \"<boolean>\"\n}",
+                                                    "cookie": [],
+                                                    "_postman_previewlanguage": "text"
+                                                },
+                                                {
+                                                    "id": "22a80160-db66-4177-a693-bd8fdaabe022",
+                                                    "name": "Internal Server Error",
+                                                    "originalRequest": {
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "vehicle-makes",
+                                                                ":makeId",
+                                                                "coverage"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": [
+                                                                {
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) Vehicle Make ID",
+                                                                        "type": "text/plain"
+                                                                    },
+                                                                    "type": "any",
+                                                                    "value": "<integer>",
+                                                                    "key": "makeId"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {}
+                                                    },
+                                                    "status": "Internal Server Error",
+                                                    "code": 500,
+                                                    "header": [
+                                                        {
+                                                            "key": "Content-Type",
+                                                            "value": "*/*"
+                                                        }
+                                                    ],
+                                                    "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                                    "cookie": [],
+                                                    "_postman_previewlanguage": "text"
+                                                }
+                                            ],
+                                            "event": [],
+                                            "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "vehicle-models",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "id": "513013a0-a1e7-4fe9-85a9-2ceff5a62925",
+                                            "name": "Get a list of vehicle models",
+                                            "request": {
+                                                "name": "Get a list of vehicle models",
+                                                "description": {
+                                                    "content": "Get the list of vehicle models by make id",
+                                                    "type": "text/plain"
+                                                },
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "vehicle-makes",
+                                                        ":makeId",
+                                                        "vehicle-models"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": [
+                                                        {
+                                                            "type": "any",
+                                                            "value": "<integer>",
+                                                            "key": "makeId",
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) Vehicle Make ID",
+                                                                "type": "text/plain"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    }
+                                                ],
+                                                "method": "GET",
+                                                "body": {},
+                                                "auth": null
+                                            },
+                                            "response": [
+                                                {
+                                                    "id": "4831f200-ea18-4478-8103-309d5f9083c8",
+                                                    "name": "OK",
+                                                    "originalRequest": {
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "vehicle-makes",
+                                                                ":makeId",
+                                                                "vehicle-models"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": [
+                                                                {
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) Vehicle Make ID",
+                                                                        "type": "text/plain"
+                                                                    },
+                                                                    "type": "any",
+                                                                    "value": "<integer>",
+                                                                    "key": "makeId"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {}
+                                                    },
+                                                    "status": "OK",
+                                                    "code": 200,
+                                                    "header": [
+                                                        {
+                                                            "key": "Content-Type",
+                                                            "value": "*/*"
+                                                        }
+                                                    ],
+                                                    "body": "{\n  \"data\": {\n    \"vehicle_models\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"success\": \"<boolean>\"\n}",
+                                                    "cookie": [],
+                                                    "_postman_previewlanguage": "text"
+                                                },
+                                                {
+                                                    "id": "9fde0c03-e61a-4752-95bd-5b2fb403c0cf",
+                                                    "name": "Internal Server Error",
+                                                    "originalRequest": {
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "vehicle-makes",
+                                                                ":makeId",
+                                                                "vehicle-models"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": [
+                                                                {
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) Vehicle Make ID",
+                                                                        "type": "text/plain"
+                                                                    },
+                                                                    "type": "any",
+                                                                    "value": "<integer>",
+                                                                    "key": "makeId"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {}
+                                                    },
+                                                    "status": "Internal Server Error",
+                                                    "code": 500,
+                                                    "header": [
+                                                        {
+                                                            "key": "Content-Type",
+                                                            "value": "*/*"
+                                                        }
+                                                    ],
+                                                    "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                                    "cookie": [],
+                                                    "_postman_previewlanguage": "text"
+                                                }
+                                            ],
+                                            "event": [],
+                                            "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "years",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "id": "b5284acd-c06c-4326-a016-adb11d0309b8",
+                                            "name": "Get a list of vehicle years",
+                                            "request": {
+                                                "name": "Get a list of vehicle years",
+                                                "description": {
+                                                    "content": "Get the list of vehicle years for every model by make id",
+                                                    "type": "text/plain"
+                                                },
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "vehicle-makes",
+                                                        ":makeId",
+                                                        "years"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": [
+                                                        {
+                                                            "type": "any",
+                                                            "value": "<integer>",
+                                                            "key": "makeId",
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) Vehicle Make ID",
+                                                                "type": "text/plain"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    }
+                                                ],
+                                                "method": "GET",
+                                                "body": {},
+                                                "auth": null
+                                            },
+                                            "response": [
+                                                {
+                                                    "id": "129e85aa-fe5d-415c-bae8-b6ca6a56c96f",
+                                                    "name": "OK",
+                                                    "originalRequest": {
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "vehicle-makes",
+                                                                ":makeId",
+                                                                "years"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": [
+                                                                {
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) Vehicle Make ID",
+                                                                        "type": "text/plain"
+                                                                    },
+                                                                    "type": "any",
+                                                                    "value": "<integer>",
+                                                                    "key": "makeId"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {}
+                                                    },
+                                                    "status": "OK",
+                                                    "code": 200,
+                                                    "header": [
+                                                        {
+                                                            "key": "Content-Type",
+                                                            "value": "*/*"
+                                                        }
+                                                    ],
+                                                    "body": "{\n  \"data\": {\n    \"vehicle_years\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  },\n  \"success\": \"<boolean>\"\n}",
+                                                    "cookie": [],
+                                                    "_postman_previewlanguage": "text"
+                                                },
+                                                {
+                                                    "id": "9a7b9ff6-f9d5-4575-8182-c0906afc65b2",
+                                                    "name": "Internal Server Error",
+                                                    "originalRequest": {
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "vehicle-makes",
+                                                                ":makeId",
+                                                                "years"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": [
+                                                                {
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) Vehicle Make ID",
+                                                                        "type": "text/plain"
+                                                                    },
+                                                                    "type": "any",
+                                                                    "value": "<integer>",
+                                                                    "key": "makeId"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {}
+                                                    },
+                                                    "status": "Internal Server Error",
+                                                    "code": 500,
+                                                    "header": [
+                                                        {
+                                                            "key": "Content-Type",
+                                                            "value": "*/*"
+                                                        }
+                                                    ],
+                                                    "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                                    "cookie": [],
+                                                    "_postman_previewlanguage": "text"
+                                                }
+                                            ],
+                                            "event": [],
+                                            "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "event": [],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8080"
+        }
+    ],
+    "info": {
+        "_postman_id": "4ad5ffd4-d692-4b9e-a53d-700a8a03ce10",
+        "name": "ADS Vehicle Coverage API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": {
+            "content": "API for managing vehicle make, model, year and coverage data.",
+            "type": "text/plain"
+        }
+    }
 }

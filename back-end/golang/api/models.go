@@ -20,6 +20,12 @@ type VehiculeModel struct {
 	Name string `db:"name" json:"name"`
 }
 
+type User struct {
+	ID           int64  `db:"user_id" json:"id"`
+	Username     string `db:"username" json:"username"`
+	PasswordHash string `db:"password_hash" json:"-"`
+}
+
 // Data structures for API responses
 type VehicleMakeData struct {
 	VehicleMakes []*VehicleMake `json:"vehicle_makes"`
@@ -77,4 +83,19 @@ type VehicleCoverageResponse struct {
 type PostMessageResponse struct {
 	Success bool            `json:"success"`
 	Data    PostMessageData `json:"data"`
+}
+
+// Auth types
+type LoginRequest struct {
+	Username string `json:"username" binding:"required"`
+	Password string `json:"password" binding:"required"`
+}
+
+type LoginData struct {
+	Token string `json:"token"`
+}
+
+type LoginResponse struct {
+	Success bool      `json:"success"`
+	Data    LoginData `json:"data"`
 }

@@ -129,3 +129,21 @@ func SwitchVehicleMakeCoverageState(makeId string, modelId string, year string) 
 
 	return nil
 }
+
+func GetUserByUsername(username string) (*User, error) {
+	var user User
+	db, err := GetConn()
+
+	if err != nil {
+		return nil, err
+	}
+
+	defer db.Close()
+
+	err = db.Get(&user, "SELECT * FROM user WHERE username = ?", username)
+
+	if err != nil {
+		return nil, err
+	}
+	return &user, nil
+}

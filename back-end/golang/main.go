@@ -1,11 +1,21 @@
+// @title           ADS Vehicle Coverage API
+// @version         1.0
+// @description     API for managing vehicle make, model, year and coverage data.
+// @host            localhost:8080
+// @schemes         http
+// @basePath        /
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authorization
 package main
 
 import (
+	"log"
+	"os"
+
 	"adsdata.ca/backendapi/api"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-	"log"
-	"os"
 )
 
 func main() {

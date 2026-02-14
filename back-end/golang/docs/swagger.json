@@ -1,9 +1,69 @@
 {
+    "schemes": [
+        "http"
+    ],
     "swagger": "2.0",
     "info": {
-        "contact": {}
+        "description": "API for managing vehicle make, model, year and coverage data.",
+        "title": "ADS Vehicle Coverage API",
+        "contact": {},
+        "version": "1.0"
     },
+    "host": "localhost:8080",
+    "basePath": "/",
     "paths": {
+        "/api/login": {
+            "post": {
+                "description": "Authenticate and receive a JWT token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login",
+                "parameters": [
+                    {
+                        "description": "Username and password",
+                        "name": "credentials",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.LoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.LoginResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/api/vehicle-makes": {
             "get": {
                 "description": "Get the list of vehicle make",
@@ -105,6 +165,38 @@
                 }
             }
         },
+        "/api/vehicle-makes/:makeId/vehicle-models": {
+            "get": {
+                "description": "Get the list of vehicle models by make id",
+                "tags": [
+                    "Models"
+                ],
+                "summary": "Get a list of vehicle models",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Vehicle Make ID",
+                        "name": "makeId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.VehicleModelResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.APIErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/api/vehicle-makes/:makeId/years": {
             "get": {
                 "description": "Get the list of vehicle years for every model by make id",
@@ -136,38 +228,6 @@
                     }
                 }
             }
-        },
-        "/api/vehicle-makes/{makeId}/vehicle-models": {
-            "get": {
-                "description": "Get the list of vehicle models by make id",
-                "tags": [
-                    "Models"
-                ],
-                "summary": "Get a list of vehicle models",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "Vehicle Make ID",
-                        "name": "makeId",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/api.VehicleModelResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/api.APIErrorResponse"
-                        }
-                    }
-                }
-            }
         }
     },
     "definitions": {
@@ -179,6 +239,40 @@
                 },
                 "message": {
                     "type": "string"
+                }
+            }
+        },
+        "api.LoginData": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.LoginRequest": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.LoginResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/api.LoginData"
+                },
+                "success": {
+                    "type": "boolean"
                 }
             }
         },
@@ -317,6 +411,13 @@
                     "type": "string"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }

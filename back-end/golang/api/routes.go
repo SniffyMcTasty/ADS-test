@@ -15,7 +15,7 @@ import (
 // @Router /api/vehicle-makes [get]
 func handleVehicleMakeList(c *gin.Context) {
 
-	vehicleMakes, err := GetListVehicleMake()
+	vehicleMakes, err := dbGetListVehicleMake()
 
 	if err != nil {
 		log.Printf("Cannot load vehicle make. err=%v", err)
@@ -48,10 +48,10 @@ func handleVehicleMakeList(c *gin.Context) {
 // @Param makeId path int true "Vehicle Make ID"
 // @Success 200 {object} VehicleModelResponse
 // @Failure 500 {object} APIErrorResponse
-// @Router /api/vehicle-makes/{makeId}/vehicle-models [get]
+// @Router /api/vehicle-makes/:makeId/vehicle-models [get]
 func handleVehicleModelList(c *gin.Context) {
 
-	vehicleModels, err := GetListVehicleModel(c.Param("makeId"))
+	vehicleModels, err := dbGetListVehicleModel(c.Param("makeId"))
 
 	if err != nil {
 		log.Printf("Cannot load vehicle models. err=%v", err)
@@ -87,7 +87,7 @@ func handleVehicleModelList(c *gin.Context) {
 // @Router /api/vehicle-makes/:makeId/years [get]
 func handleVehicleYearsList(c *gin.Context) {
 
-	vehicleYears, err := GetListVehicleYears(c.Param("makeId"))
+	vehicleYears, err := dbGetListVehicleYears(c.Param("makeId"))
 
 	if err != nil {
 		log.Printf("Cannot load vehicle years. err=%v", err)
@@ -123,7 +123,7 @@ func handleVehicleYearsList(c *gin.Context) {
 // @Router /api/vehicle-makes/:makeId/coverage [get]
 func handleVehicleMakeCoverageList(c *gin.Context) {
 
-	coverage, err := GetListVehicleMakeCoverage(c.Param("makeId"))
+	coverage, err := dbGetListVehicleMakeCoverage(c.Param("makeId"))
 
 	if err != nil {
 		log.Printf("Cannot load coverages. err=%v", err)
@@ -161,7 +161,7 @@ func handleVehicleMakeCoverageList(c *gin.Context) {
 // @Router /api/vehicle-makes/:makeId/change-coverage/:modelId/:year [post]
 func handleVehicleMakeCoverageSwitchState(c *gin.Context) {
 
-	err := SwitchVehicleMakeCoverageState(c.Param("makeId"), c.Param("modelId"), c.Param("year"))
+	err := dbSwitchVehicleMakeCoverageState(c.Param("makeId"), c.Param("modelId"), c.Param("year"))
 
 	if err != nil {
 		log.Printf("Cannot change coverage state. err=%v", err)
