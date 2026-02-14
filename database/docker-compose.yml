@@ -11,6 +11,8 @@ services:
       MYSQL_PASSWORD: pwdtest
       MYSQL_ROOT_PASSWORD: pwdtest
       MYSQL_DATABASE: local_dbtest
+      TZ: 'America/Montreal'
+    command: --default-time-zone='America/Montreal'
     # sync folders. MySQL data is stored outside container so that rebuilding doesn't clear db.
     # folder is at workspace root.
     volumes:
