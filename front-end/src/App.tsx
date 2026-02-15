@@ -4,10 +4,12 @@ import MakeSelector from "./components/MakeSelector";
 import "./styles/App.scss";
 import { getMakes, login } from "./api/api";
 import type { VehicleMakeData } from "./types/vehicle";
+import Spinner from "./components/Spinner";
 
 const App: React.FC = () => {
   const [makes, setMakes] = useState<VehicleMakeData>();
   const [selectedMake, setSelectedMake] =useState<number>(0);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     login()
@@ -17,11 +19,16 @@ const App: React.FC = () => {
       })
       .then((data) => {
         setMakes(data);
+        const firstMakeId = data.vehicle_makes?.[0]?.id || 0;
+        if (firstMakeId) setSelectedMake(firstMakeId);
+        setReady(true);
       })
       .catch((err) => {
         console.error("Error during initialization:", err);
       });
   }, []); // Empty dependency array = runs once on mount
+
+  if (!ready) return <Spinner />;
 
   return (
     <div className="App">

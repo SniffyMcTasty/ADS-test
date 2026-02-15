@@ -36,8 +36,8 @@ func RegisterRoutes(r *gin.Engine) {
 		// Vehicles
 		protected.GET("/vehicle-makes", handleVehicleMakeList)
 		protected.GET("/vehicle-makes/:makeId/vehicle-models", handleVehicleModelList)
-		protected.GET("/vehicle-makes/:makeId/years", handleVehicleYearsList)
-		protected.GET("/vehicle-makes/:makeId/coverage", handleVehicleMakeCoverageList)
+		protected.GET("/vehicle-makes/:makeId/vehicle-years", handleVehicleYearsList)
+		protected.GET("/vehicle-makes/:makeId/vehicle-coverage", handleVehicleMakeCoverageList)
 		protected.POST("/vehicle-makes/:makeId/change-coverage/:modelId/:year", handleVehicleMakeCoverageSwitchState)
 	}
 }

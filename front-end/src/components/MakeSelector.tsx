@@ -16,11 +16,14 @@ const MakeSelector: React.FC<Props> = ({
     <div className="make-selector">
       <select
         value={selected}
-        onChange={(e) => onChange(parseInt(e.target.value))}
+        onChange={(e) => {
+          onChange(e.target.value ? parseInt(e.target.value) : 0);
+        }}
       >
-        {Object.entries(makes || []).map(([id, name]) => (
-          <option key={id} value={id}>
-            {name}
+        {
+          Object.entries(makes?.vehicle_makes || []).map(([id, make]) => (
+          <option key={id} value={make.id}>
+            {make.name}
           </option>
         ))}
       </select>
