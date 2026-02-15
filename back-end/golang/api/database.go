@@ -121,7 +121,7 @@ func SwitchVehicleMakeCoverageState(makeId string, modelId string, year string) 
 
 	defer db.Close()
 
-	_, err = db.Exec("UPDATE vehicle SET state = 1 - state WHERE vehicle_make_id = ? AND vehicle_model_id = ? AND vehicle_year = ?", makeId, modelId, year)
+	_, err = db.Exec("INSERT INTO vehicle (vehicle_make_id, vehicle_model_id, vehicle_year, state) VALUES (?, ?, ?, 1) ON DUPLICATE KEY UPDATE state = 1 - state", makeId, modelId, year)
 
 	if err != nil {
 		return err

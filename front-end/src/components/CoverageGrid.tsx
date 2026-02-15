@@ -7,23 +7,20 @@ import {
 } from "../api/api";
 import Spinner from "./Spinner";
 import "../styles/CoverageGrid.scss";
-import type { VehicleModelData, VehicleYearData } from "../types/vehicle";
+import type { VehicleCoverageData, VehicleMake, VehicleModel, VehicleModelData, VehicleYearData } from "../types/vehicle";
 
 interface Props {
-  selectedMake: number;
+  selectedMake: VehicleMake | undefined;
 }
 
 const CoverageGrid: React.FC<Props> = ({
   selectedMake
 }) => {
-  const [models, setModels] = useState<VehicleModelData>();
-  const [years, setYears] = useState<VehicleYearData>();
-  const [coverage, setCoverage] = useState<
-    Record<string, number[]>
-  >({});
-  const [loading, setLoading] = useState<boolean>(true);
-  const [cellLoading, setCellLoading] =
-    useState<string | null>(null);
+  const [modelList, setModels] = useState<VehicleModelData>();
+  const [yearList, setYears] = useState<VehicleYearData>();
+  const [coverage, setCoverage] = useState<VehicleCoverageData>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [cellLoading, setCellLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const fetchAll = async () => {
@@ -31,13 +28,15 @@ const CoverageGrid: React.FC<Props> = ({
     setError(null);
 
     try {
-      const modelsData = await getModels(selectedMake);
-      const yearsData = await getYears(selectedMake);
-      const coverageData = await getCoverage(selectedMake);
+      const [modelsData, yearsData, coverageData] = await Promise.all([
+        getModels(selectedMake?.id || 0),
+        getYears(selectedMake?.id || 0),
+        getCoverage(selectedMake?.id || 0),
+      ]);
 
       setModels(modelsData);
       setYears(yearsData);
-      setCoverage(coverageData.coverage);
+      setCoverage(coverageData);
     } catch (err: any) {
       setError(err.message || "Something went wrong");
     } finally {
@@ -51,7 +50,7 @@ const CoverageGrid: React.FC<Props> = ({
   }, [selectedMake]);
 
   const handleToggle = async (
-    model: number,
+    model: VehicleModel,
     year: number
   ) => {
     const key = `${model}-${year}`;
@@ -59,10 +58,17 @@ const CoverageGrid: React.FC<Props> = ({
     setError(null);
 
     try {
-      await toggleCoverage(selectedMake, model, year);
+      await toggleCoverage(selectedMake?.id || 0, model.id, year);
 
-      const updated = await getCoverage(selectedMake);
-      setCoverage(updated.coverage);
+      const updated = coverage?.coverage[model.name]?.includes(year) ? coverage.coverage[model.name].filter((y) => y !== year)
+        : [...(coverage?.coverage[model.name] || []), year];
+      setCoverage(prev => ({
+        ...prev,
+        coverage: {
+          ...prev?.coverage,
+          [model.name]: updated
+        }
+      }));
     } catch (err: any) {
       setError(err.message || "Toggle failed");
     } finally {
@@ -71,56 +77,65 @@ const CoverageGrid: React.FC<Props> = ({
   };
 
   const isActive = (model: string, year: number) =>
-    coverage[model]?.includes(year);
+    coverage?.coverage[model]?.includes(year) ?? false;
 
   if (loading) return <Spinner />;
 
   return (
-    <div className="grid-container">
-      <h2>{selectedMake}</h2>
+    <div className="grid-wrapper">
+      {error && <div className="grid-error">{error}</div>}
 
-      {error && <div className="error">{error}</div>}
+      <div className="grid-scroll">
+        <table className="coverage-table">
+          <thead>
+            <tr>
+              <th
+                className="logo-cell"
+                rowSpan={(Object.entries(modelList ?? {})?.length ?? 0) + 1}
+              >
+                {selectedMake?.name && (
+                  <img
+                    src={new URL(`../assets/logos/logo-${selectedMake.id}.png`, import.meta.url)}
+                    alt={selectedMake.name}
+                    className="make-logo"
+                  />
+                )}
+              </th>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Model</th>
-            {Object.values(years || []).map((year) => (
-              <th key={year}>{year}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {Object.values(models || []).map((model) => (
-            <tr key={model.id}>
-              <td className="model-name">
-                {model.name}
-              </td>
-              {Object.values(years || []).map((year) => {
-                const key = `${model.id}-${year}`;
-                return (
-                  <td
-                    key={year}
-                    className={
-                      isActive(model.id, year)
-                        ? "active"
-                        : "inactive"
-                    }
-                    onClick={() =>
-                      !cellLoading &&
-                      handleToggle(model.id, year)
-                    }
-                  >
-                    {cellLoading === key
-                      ? "..."
-                      : ""}
-                  </td>
-                );
-              })}
+              {Object.values(yearList?.vehicle_years ?? {}).map((year) => (
+                <th key={year} className="year-header">
+                  <span>{year}</span>
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {Object.entries(modelList?.vehicle_models ?? {}).map(([id, model], rowIndex) => (
+              <tr key={id} className={rowIndex % 2 === 0 ? "row-even" : "row-odd"}>
+                <td className="model-name">{model.name}</td>
+
+                {Object.values(yearList?.vehicle_years ?? {}).map((year) => {
+                  const key = `${model.id}-${year}`;
+                  const active = isActive(model.name, year);
+                  const isLoadingCell = cellLoading === key;
+
+                  return (
+                    <td
+                      key={year}
+                      className={`coverage-cell ${active ? "cell-active" : "cell-inactive"} ${isLoadingCell ? "cell-loading" : ""}`}
+                      onClick={() => !cellLoading && handleToggle(model, year)}
+                      title={`${model.name} – ${year}`}
+                    >
+                      {isLoadingCell && <span className="cell-spinner" />}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

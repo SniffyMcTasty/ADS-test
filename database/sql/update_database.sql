@@ -2,6 +2,7 @@
 ALTER TABLE vehicle
     ADD COLUMN `state` TINYINT UNSIGNED NOT NULL DEFAULT 1 CHECK (`state` IN (0,1)) AFTER vehicle_year,
     ADD COLUMN `updated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER `state`;
+    ADD UNIQUE INDEX idx_vehicle_make_model_year (vehicle_make_id, vehicle_model_id, vehicle_year);
 
 CREATE TABLE IF NOT EXISTS `user` (
     `user_id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,

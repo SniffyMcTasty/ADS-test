@@ -1,10 +1,10 @@
 import React from "react";
-import type { VehicleMakeData } from "../types/vehicle";
+import type { VehicleMake, VehicleMakeData } from "../types/vehicle";
 
 interface Props {
   makes?: VehicleMakeData;
-  selected: number;
-  onChange: (make: number) => void;
+  selected: VehicleMake | undefined;
+  onChange: (make: VehicleMake) => void;
 }
 
 const MakeSelector: React.FC<Props> = ({
@@ -15,9 +15,10 @@ const MakeSelector: React.FC<Props> = ({
   return (
     <div className="make-selector">
       <select
-        value={selected}
+        value={selected?.id || 0}
         onChange={(e) => {
-          onChange(e.target.value ? parseInt(e.target.value) : 0);
+          const selectedMake = makes?.vehicle_makes?.find(m => m.id === parseInt(e.target.value));
+          if (selectedMake) onChange(selectedMake);
         }}
       >
         {

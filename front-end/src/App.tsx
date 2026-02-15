@@ -3,12 +3,12 @@ import CoverageGrid from "./components/CoverageGrid";
 import MakeSelector from "./components/MakeSelector";
 import "./styles/App.scss";
 import { getMakes, login } from "./api/api";
-import type { VehicleMakeData } from "./types/vehicle";
+import type { VehicleMake, VehicleMakeData } from "./types/vehicle";
 import Spinner from "./components/Spinner";
 
 const App: React.FC = () => {
   const [makes, setMakes] = useState<VehicleMakeData>();
-  const [selectedMake, setSelectedMake] =useState<number>(0);
+  const [selectedMake, setSelectedMake] =useState<VehicleMake>();
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const App: React.FC = () => {
       .then((data) => {
         setMakes(data);
         const firstMakeId = data.vehicle_makes?.[0]?.id || 0;
-        if (firstMakeId) setSelectedMake(firstMakeId);
+        if (firstMakeId) setSelectedMake(data.vehicle_makes?.[0]);
         setReady(true);
       })
       .catch((err) => {

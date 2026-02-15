@@ -1,57 +1,171 @@
-.grid-container {
-  padding: 40px;
-  text-align: center;
-}
-
-table {
+.grid-wrapper {
+  width: fit-content;
   margin: 0 auto;
-  border-collapse: collapse;
+  padding: 24px 32px 48px;
+  box-sizing: border-box;
 }
 
-th,
-td {
-  border: 1px solid #ccc;
-  width: 60px;
-  height: 40px;
+.grid-scroll {
+  overflow-x: auto;
+}
+
+.coverage-table {
+  border-collapse: separate;
+  border-spacing: 8px;
+  table-layout: fixed;
+}
+
+.logo-cell {
+  width: 200px;
+  min-width: 200px;
+  background-color: #f0f0f0;
+  vertical-align: middle;
   text-align: center;
-  cursor: pointer;
+  padding: 24px 16px;
+  border-radius: 6px;
+}
+
+.make-logo {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+  background-color: transparent;
+}
+
+.year-header {
+  width: 36px;
+  min-width: 36px;
+  height: 80px;
+  vertical-align: bottom;
+  padding: 0 0 6px 0;
+  font-weight: 500;
+  font-size: 12px;
+  color: #555;
+  cursor: default;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+.year-header span {
+  display: inline-block;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0.03em;
 }
 
 .model-name {
-  font-weight: bold;
-  width: 120px;
+  width: 160px;
+  min-width: 160px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
   cursor: default;
+  white-space: nowrap;
+  height: 36px;
+  vertical-align: middle;
 }
 
-.active {
-  background-color: #007bff;
+.row-even .model-name {
+  background-color: #c0c0c0;
+  border-radius: 4px 0 0 4px;
 }
 
-.inactive {
+.row-odd .model-name {
+  background-color: #e0e0e0;
+  border-radius: 4px 0 0 4px;
+}
+
+.coverage-cell {
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  vertical-align: middle;
+  transition: filter 0.1s ease, transform 0.1s ease;
+}
+
+.coverage-cell:hover:not(.cell-loading) {
+  filter: brightness(0.88);
+  transform: scale(1.08);
+}
+
+.cell-active {
+  background-color: #1515dd;
+}
+
+/* Row striping for inactive cells */
+.row-even .cell-inactive {
+  background-color: #c0c0c0;
+}
+
+.row-odd .cell-inactive {
   background-color: #e0e0e0;
 }
 
-.error {
-  color: red;
-  margin-bottom: 10px;
+.cell-loading {
+  cursor: wait;
+  opacity: 0.7;
 }
+
+.cell-spinner {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: cell-spin 0.6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes cell-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* For inactive cell spinner, use a dark color */
+.cell-inactive .cell-spinner {
+  border-color: rgba(0, 0, 0, 0.15);
+  border-top-color: #555;
+}
+
+/* ── Page-level spinner (reused from Spinner.tsx) ───── */
 
 .spinner {
   margin: 100px auto;
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #007bff;
+  border: 5px solid #e8e9ea;
+  border-top: 5px solid #1565c8;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 0.8s linear infinite;
+  width: 48px;
+  height: 48px;
+  animation: spin 0.75s linear infinite;
 }
 
 @keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
+
+/* ── Make selector ──────────────────────────────────── */
 
 .make-selector {
   margin: 20px;
+}
+
+/* ── Error banner ───────────────────────────────────── */
+
+.grid-error {
+  color: #c0392b;
+  background: #fdf0ef;
+  border: 1px solid #f5c6c2;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  display: inline-block;
 }
