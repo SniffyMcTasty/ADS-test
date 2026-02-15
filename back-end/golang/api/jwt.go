@@ -1,7 +1,6 @@
 package api
 
 import (
-	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -71,8 +70,6 @@ func AuthMiddleware() gin.HandlerFunc {
 			}
 			return jwtSecret(), nil
 		})
-
-		log.Printf("JWT validation: token=%v, err=%v", token, err)
 
 		if err != nil || token == nil || !token.Valid {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, APIResponse[any]{
